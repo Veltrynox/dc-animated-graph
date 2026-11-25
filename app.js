@@ -9,7 +9,7 @@
   const year = t => parseInt(String(t.releaseDate).slice(0, 4), 10);
 
   // ---------- graph elements ----------
-  const nodes = titles.map(t => ({ group: 'nodes', data: { id: t.id, label: t.title, poster: t.thumb || t.poster }, classes: 'title' }));
+  const nodes = titles.map(t => ({ group: 'nodes', data: { id: t.id, label: t.title, poster: t.thumb || t.poster || undefined }, classes: 'title' }));
   const edges = [];
   titles.forEach(t => t.links.forEach(src => edges.push({ group: 'edges', data: { id: src + '>' + t.id, source: src, target: t.id } })));
 
@@ -20,13 +20,14 @@
     style: [
       { selector: 'node.title', style: {
         shape: 'round-rectangle', width: W, height: H,
-        'background-color': '#1b2030', 'background-image': 'data(poster)', 'background-fit': 'cover',
+        'background-color': '#1b2030', 'background-fit': 'cover',
         'background-image-crossorigin': 'null', 'background-image-opacity': 1,
         'border-width': 1, 'border-color': '#2d3446',
         label: 'data(label)', color: '#c9cfdb', 'font-size': 9, 'text-valign': 'bottom', 'text-margin-y': 5,
         'text-wrap': 'wrap', 'text-max-width': GX - 8, 'min-zoomed-font-size': 7,
         'transition-property': 'opacity, border-color, border-width', 'transition-duration': '180ms'
       } },
+      { selector: 'node.title[poster]', style: { 'background-image': 'data(poster)' } },
       { selector: 'node.rowlabel', style: {
         shape: 'rectangle', width: 1, height: 1, 'background-opacity': 0, label: 'data(label)',
         color: '#8a93a6', 'font-size': 15, 'font-weight': 600, 'text-halign': 'left', 'text-valign': 'center',
