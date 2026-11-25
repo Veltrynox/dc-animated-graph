@@ -11,4 +11,4 @@ An interactive map of DC animated movies and TV shows (no live action), from 196
 
 Plain HTML/JS with [Cytoscape.js](https://js.cytoscape.org/). No build step.
 
-Posters © DC / Warner Bros., loaded from dc.com. This is an unofficial fan project.
+Posters © DC / Warner Bros. Unofficial, non-commercial fan project.
