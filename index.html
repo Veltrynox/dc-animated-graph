@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DC Animated Graph</title>
+<link rel="stylesheet" href="style.css">
+<script src="vendor/cytoscape.min.js"></script>
+</head>
+<body>
+<header class="bar">
+  <h1>DC Animated <span>Graph</span></h1>
+  <div class="controls">
+    <div class="seg" role="radiogroup" aria-label="Layout">
+      <button data-layout="timeline" class="on">Release date</button>
+      <button data-layout="collection">Collection</button>
+      <button data-layout="story">Story order</button>
+    </div>
+    <label class="tog" title="Dim titles you've rated on IMDb"><input type="checkbox" id="seenToggle"> Grey out seen <span id="seenCount" class="count"></span></label>
+    <div class="pick">
+      <input id="charInput" list="charList" placeholder="Pick a character…" autocomplete="off">
+      <datalist id="charList"></datalist>
+      <button id="charClear" title="Clear" hidden>×</button>
+      <span id="charCount" class="count"></span>
+    </div>
+  </div>
+</header>
+<main>
+  <div id="cy"></div>
+  <aside id="panel" hidden>
+    <button id="panelClose" class="x" title="Close">×</button>
+    <img id="pPoster" alt="">
+    <h2 id="pTitle"></h2>
+    <dl>
+      <dt>Released</dt><dd id="pDate"></dd>
+      <dt>Collection</dt><dd id="pColl"></dd>
+      <dt>Type</dt><dd id="pType"></dd>
+      <dt id="pSeenDt">Your rating</dt><dd id="pSeen"></dd>
+    </dl>
+    <h3>Characters</h3>
+    <ul id="pChars" class="chips"></ul>
+    <div id="pLinksWrap"><h3>Story chain</h3><ul id="pLinks" class="links"></ul></div>
+    <a id="pSource" target="_blank" rel="noopener">View on dc.com ↗</a>
+    <a id="pImdb" target="_blank" rel="noopener">View on IMDb ↗</a>
+  </aside>
+</main>
+<footer class="foot"><span id="stats"></span> · Posters © DC / Warner Bros., from dc.com</footer>
+<script src="data/titles.js"></script>
+<script src="data/seen.js" onerror="window.__SEEN__={}"></script>
+<script src="app.js"></script>
+</body>
+</html>
